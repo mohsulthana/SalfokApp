@@ -11,7 +11,7 @@
         <!--Main Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainScreen" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainScreen" customModule="SalfokApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,18 +45,6 @@
                                 <color key="textColor" red="1" green="0.99997597930000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfr-dt-YzZ">
-                                <rect key="frame" x="248" y="613" width="93" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97256201509999995" green="0.972525537" blue="0.9725503325" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                <state key="normal" title="Go">
-                                    <color key="titleColor" red="0.01203828212" green="0.25922730570000002" blue="0.41178250309999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <segue destination="dQ3-vm-aMa" kind="show" id="Qwc-Ov-pq8"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by GoksTim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO3-Nx-PhI">
                                 <rect key="frame" x="151" y="791" width="88" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,10 +52,25 @@
                                 <color key="textColor" red="0.01203828212" green="0.25922730570000002" blue="0.41178250309999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANk-En-wYm">
+                                <rect key="frame" x="249" y="620" width="93" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97256201509999995" green="0.972525537" blue="0.9725503325" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" red="0.01203828212" green="0.25922730570000002" blue="0.41178250309999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dQ3-vm-aMa" kind="show" id="zLN-9L-9jW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="goButton" destination="ANk-En-wYm" id="d1G-iz-UJv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,7 +79,7 @@
         <!--First Instructions-->
         <scene sceneID="SGD-Gr-aGC">
             <objects>
-                <viewController id="dQ3-vm-aMa" customClass="FirstInstructions" sceneMemberID="viewController">
+                <viewController id="dQ3-vm-aMa" customClass="FirstInstructions" customModule="SalfokApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PA6-c7-HAr">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,17 +148,20 @@
                         <color key="backgroundColor" red="0.1053352728" green="0.46543931960000001" blue="0.69414508340000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="ugL-dU-evm"/>
+                    <connections>
+                        <segue destination="pgt-iv-SkL" kind="show" identifier="Second Instructions" id="qKY-q4-V1d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f80-8p-M7a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984.61538461538453" y="125.82938388625591"/>
+            <point key="canvasLocation" x="931" y="126"/>
         </scene>
         <!--Second Instructions-->
         <scene sceneID="blY-IH-ake">
             <objects>
-                <viewController id="pgt-iv-SkL" customClass="SecondInstructions" sceneMemberID="viewController">
+                <viewController id="pgt-iv-SkL" customClass="SecondInstructions" customModule="SalfokApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HxZ-j4-Ww6">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuG-GS-Ha6">
@@ -208,6 +214,10 @@
                         <viewLayoutGuide key="safeArea" id="pFM-m6-1ce"/>
                         <color key="backgroundColor" red="0.039867416019999997" green="0.46891516449999998" blue="0.71375447510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PZK-r3-A42"/>
+                    <connections>
+                        <segue destination="KH2-TK-FCO" kind="show" identifier="Third Instructions" id="twU-gP-Pn2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fI7-ez-GDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -216,9 +226,9 @@
         <!--Third Instructions-->
         <scene sceneID="n6o-PG-PBe">
             <objects>
-                <viewController id="KH2-TK-FCO" customClass="ThirdInstructions" sceneMemberID="viewController">
+                <viewController id="KH2-TK-FCO" customClass="ThirdInstructions" customModule="SalfokApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oCX-u6-wMr">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkX-aB-iSx">
@@ -271,6 +281,10 @@
                         <viewLayoutGuide key="safeArea" id="Lvp-WQ-D96"/>
                         <color key="backgroundColor" red="0.042289458219999999" green="0.47238522770000002" blue="0.73336368799999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8mB-C5-q3G"/>
+                    <connections>
+                        <segue destination="u5T-cw-4jW" kind="show" identifier="Ready Go" id="Fvg-vA-Df5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7k-Js-QMB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,9 +293,9 @@
         <!--Ready Go-->
         <scene sceneID="KJL-mB-wJe">
             <objects>
-                <viewController id="u5T-cw-4jW" customClass="ReadyGo" sceneMemberID="viewController">
+                <viewController id="u5T-cw-4jW" customClass="ReadyGo" customModule="SalfokApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7xu-il-REt">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fye-XC-MnC">
@@ -337,6 +351,7 @@
                         <viewLayoutGuide key="safeArea" id="uit-AO-Y18"/>
                         <color key="backgroundColor" red="0.1060124263" green="0.47318881750000003" blue="0.70591026540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
+                    <navigationItem key="navigationItem" id="x1F-fO-nZ8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LM8-kh-eNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
