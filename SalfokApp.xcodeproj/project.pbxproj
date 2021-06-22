@@ -14,6 +14,7 @@
 		17DD25BF267AE6590041A354 /* SalfokApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25BD267AE6590041A354 /* SalfokApp.xcdatamodeld */; };
 		17DD25C1267AE65A0041A354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25C0267AE65A0041A354 /* Assets.xcassets */; };
 		17DD25C4267AE65A0041A354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25C2267AE65A0041A354 /* LaunchScreen.storyboard */; };
+		8ECB7DB1268227D4000D4A82 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB7DB0268227D4000D4A82 /* SummaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		17DD25C0267AE65A0041A354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17DD25C3267AE65A0041A354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17DD25C5267AE65A0041A354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ECB7DB0268227D4000D4A82 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				17DD25C2267AE65A0041A354 /* LaunchScreen.storyboard */,
 				17DD25C5267AE65A0041A354 /* Info.plist */,
 				17DD25BD267AE6590041A354 /* SalfokApp.xcdatamodeld */,
+				8ECB7DB0268227D4000D4A82 /* SummaryViewController.swift */,
 			);
 			path = SalfokApp;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				17DD25B5267AE6590041A354 /* AppDelegate.swift in Sources */,
 				17DD25B7267AE6590041A354 /* SceneDelegate.swift in Sources */,
 				17DD25BF267AE6590041A354 /* SalfokApp.xcdatamodeld in Sources */,
+				8ECB7DB1268227D4000D4A82 /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

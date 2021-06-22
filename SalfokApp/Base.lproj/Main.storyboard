@@ -31,8 +31,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wl-ja-hKW">
-                                <rect key="frame" x="122" y="155" width="147" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wl-ja-hKW">
+                                <rect key="frame" x="78" y="155" width="235" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
@@ -85,6 +85,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQA-cB-0jY">
+                                <rect key="frame" x="168" y="531" width="64" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startToPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vTC-vh-Knt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.47843137254901957" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,6 +104,7 @@
                         <outlet property="charLabel" destination="27Y-x4-bP3" id="QhQ-Ea-Dbl"/>
                         <outlet property="closeButton" destination="mnP-Yg-XXV" id="Zss-gT-hdR"/>
                         <outlet property="differentButton" destination="kIw-bQ-m5g" id="QKY-sa-phl"/>
+                        <outlet property="fakeButton" destination="AQA-cB-0jY" id="HaI-Uj-lme"/>
                         <outlet property="infoHowToPlayButton" destination="wdd-Cl-eyO" id="nd4-eq-M4z"/>
                         <outlet property="sameButton" destination="JLP-Nr-l2n" id="ht0-us-KVt"/>
                         <outlet property="scoringLabel" destination="sjH-aH-Ur4" id="cBE-GO-ygy"/>
@@ -103,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="135.38461538461539" y="125.82938388625591"/>
         </scene>
-        <!--View Controller-->
+        <!--Summary View Controller-->
         <scene sceneID="I2y-hX-bXN">
             <objects>
-                <viewController id="s3C-lu-Qn2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="summary" id="s3C-lu-Qn2" customClass="SummaryViewController" customModule="SalfokApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0P5-sf-MDJ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,6 +210,12 @@
                         <viewLayoutGuide key="safeArea" id="HFR-ea-sRc"/>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.47843137254901957" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="correctLabel" destination="Dna-TZ-wNo" id="aj3-Ts-zYF"/>
+                        <outlet property="playAgainButton" destination="mcJ-gu-mP1" id="tNE-Mt-C59"/>
+                        <outlet property="scoreLabel" destination="noN-Pe-WnS" id="kqP-v3-Nii"/>
+                        <outlet property="wrongLabel" destination="BYA-Eb-f8l" id="Sn9-NJ-m3E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyK-wP-URY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
