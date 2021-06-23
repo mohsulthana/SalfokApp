@@ -19,9 +19,6 @@ class MainScreen: UIViewController {
     }
     
     @IBAction func startPlayToInfo(_ sender: Any) {
-        
-        print("button go berhasil")
-        
         let vc = storyboard?.instantiateViewController(identifier: "info") as! FirstInstructions
         vc.modalPresentationStyle = .fullScreen
 //            present(vc,animated: true)

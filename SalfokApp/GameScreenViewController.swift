@@ -47,7 +47,6 @@ class GameScreenViewController: UIViewController {
         
         if containerHuruf.count > 2 {
             timer.invalidate()
-            hurufLabel.text = randomElem
             self.currentHuruf = randomElem!
             self.sameButton.isHidden = false
             self.differentButton.isHidden = false
@@ -55,7 +54,6 @@ class GameScreenViewController: UIViewController {
         } else {
             hurufLabel.text = randomElem
         }
-        print(containerHuruf)
     }
     
     @objc func runTimer() {
@@ -73,7 +71,14 @@ class GameScreenViewController: UIViewController {
         
 //        let decisecond = String(format: "%.1f", counter).components(separatedBy: ".").last!
         
-        timerLabel.text = "\(minuteString):\(secondString)"
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.subtype = CATransitionSubtype.fromTop
+        self.timerLabel.text = "\(minuteString):\(secondString)"
+        animation.duration = 0.1
+        self.timerLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
         
         if minute == 0 && second == 0 {
             timer.invalidate()
@@ -82,23 +87,15 @@ class GameScreenViewController: UIViewController {
             let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
             vc.modalPresentationStyle = .fullScreen
 //            present(vc,animated: true)
-            
-            let transition = CATransition()
-            transition.duration = 0.5
-            transition.type = CATransitionType.push
-            transition.subtype = CATransitionSubtype.fromRight
-            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-            view.window!.layer.add(transition, forKey: kCATransition)
-            present(vc, animated: false, completion: nil)
         }
     }
     
     
     @IBAction func sameButton(_ sender: Any) {
+        
         let n = containerHuruf.count - 3
         let lastValue = containerHuruf.last
         let randomElem = alphabet.randomElement()
-        print(containerHuruf)
         
         if lastValue! == containerHuruf[n] {
             print("Benar")
@@ -106,7 +103,14 @@ class GameScreenViewController: UIViewController {
             print("Salah")
         }
         containerHuruf.append(randomElem!)
-        hurufLabel.text = randomElem
+        
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.push
+        self.hurufLabel.text = randomElem
+        animation.duration = 0.25
+        self.hurufLabel.layer.add(animation, forKey: CATransitionType.push.rawValue)
     }
     
     
@@ -114,7 +118,6 @@ class GameScreenViewController: UIViewController {
         let n = containerHuruf.count - 3
         let lastValue = containerHuruf.last
         let randomElem = alphabet.randomElement()
-        print(containerHuruf)
         
         if lastValue! != containerHuruf[n] {
             print("Benar")
@@ -122,6 +125,30 @@ class GameScreenViewController: UIViewController {
             print("Salah")
         }
         containerHuruf.append(randomElem!)
-        hurufLabel.text = randomElem
+
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.push
+        self.hurufLabel.text = randomElem
+        animation.duration = 0.25
+        self.hurufLabel.layer.add(animation, forKey: CATransitionType.push.rawValue)
+    }
+    
+    @IBAction func pauseGame(_ sender: Any) {
+        timer.invalidate()
+        let alert = UIAlertController(title: "Are you sure want to quit?", message: "The game will be reset after you quit the game", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Quit", style: UIAlertAction.Style.default, handler: {item in
+            let vc = self.storyboard?.instantiateViewController(identifier: "main") as! MainScreen
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Continue Game", style: UIAlertAction.Style.cancel, handler: {_ in
+            self.startToPlay()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
