@@ -11,7 +11,7 @@ class ReadyGo: UIViewController {
 
     @IBOutlet weak var readyGoLabel: UILabel!
     
-//    var counter = 3.0
+    //    var counter = 3.0
 //    var timer = Timer()
 //
 //    timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
@@ -21,8 +21,7 @@ class ReadyGo: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-//    @objc func runTimer(){
+    //    @objc func runTimer(){
 //        counter -=  0.1
 //        print(counter)
 //
