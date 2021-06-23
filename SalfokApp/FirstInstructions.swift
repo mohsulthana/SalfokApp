@@ -21,7 +21,21 @@ class FirstInstructions: UIViewController {
     @objc func swipeFunc(gesture:UISwipeGestureRecognizer) {
         if gesture.direction == .left {
             print("swiped left")
-            performSegue(withIdentifier: "Second Instructions", sender: self)
+//            performSegue(withIdentifier: "Second Instructions", sender: self)
+            
+            let vc = storyboard?.instantiateViewController(identifier: "firstLetterScreen") as! SecondInstructions
+            vc.modalPresentationStyle = .fullScreen
+//            present(vc,animated: true)
+            
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromRight
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+            view.window!.layer.add(transition, forKey: kCATransition)
+            present(vc, animated: false, completion: nil)
+            
+            
         }
     }
     
