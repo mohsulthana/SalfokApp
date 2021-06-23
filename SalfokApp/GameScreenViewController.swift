@@ -17,7 +17,7 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var hurufLabel: UILabel!
     
     var containerHuruf = [String]()
-    var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
     var counter = 60.0
     var timer = Timer()
@@ -55,6 +55,7 @@ class GameScreenViewController: UIViewController {
         } else {
             hurufLabel.text = randomElem
         }
+        print(containerHuruf)
     }
     
     @objc func runTimer() {
@@ -76,7 +77,7 @@ class GameScreenViewController: UIViewController {
         
         if minute == 0 && second == 0 {
             timer.invalidate()
-            counter = 60.0
+            counter = 6000.0
             
             let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
             vc.modalPresentationStyle = .fullScreen
@@ -94,33 +95,33 @@ class GameScreenViewController: UIViewController {
     
     
     @IBAction func sameButton(_ sender: Any) {
-        let randomElem = alphabet.randomElement()
-        containerHuruf.append(randomElem!)
-        let n = containerHuruf.count - 2
+        let n = containerHuruf.count - 3
         let lastValue = containerHuruf.last
+        let randomElem = alphabet.randomElement()
+        print(containerHuruf)
         
         if lastValue! == containerHuruf[n] {
             print("Benar")
-            hurufLabel.text = randomElem
         } else {
             print("Salah")
-            hurufLabel.text = randomElem
         }
+        containerHuruf.append(randomElem!)
+        hurufLabel.text = randomElem
     }
     
     
     @IBAction func differentButton(_ sender: Any) {
-        let randomElem = alphabet.randomElement()
-        containerHuruf.append(randomElem!)
-        let n = containerHuruf.count - 2
+        let n = containerHuruf.count - 3
         let lastValue = containerHuruf.last
+        let randomElem = alphabet.randomElement()
+        print(containerHuruf)
         
         if lastValue! != containerHuruf[n] {
             print("Benar")
-            hurufLabel.text = randomElem
         } else {
             print("Salah")
-            hurufLabel.text = randomElem
         }
+        containerHuruf.append(randomElem!)
+        hurufLabel.text = randomElem
     }
 }
