@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		17DD25B5267AE6590041A354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25B4267AE6590041A354 /* AppDelegate.swift */; };
 		17DD25B7267AE6590041A354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25B6267AE6590041A354 /* SceneDelegate.swift */; };
-		17DD25B9267AE6590041A354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25B8267AE6590041A354 /* ViewController.swift */; };
 		17DD25BC267AE6590041A354 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25BA267AE6590041A354 /* Main.storyboard */; };
 		17DD25BF267AE6590041A354 /* SalfokApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25BD267AE6590041A354 /* SalfokApp.xcdatamodeld */; };
 		17DD25C1267AE65A0041A354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25C0267AE65A0041A354 /* Assets.xcassets */; };
 		17DD25C4267AE65A0041A354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25C2267AE65A0041A354 /* LaunchScreen.storyboard */; };
+		6D29BFE92681125B007411EA /* Salfok Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D29BFE82681125B007411EA /* Salfok Icon.png */; };
+		6D5E1CAA2681F63400D8140B /* FirstInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E1CA92681F63400D8140B /* FirstInstructions.swift */; };
+		6D5E1CAE2681FBD300D8140B /* SecondInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E1CAD2681FBD300D8140B /* SecondInstructions.swift */; };
+		6D5E1CB02682082600D8140B /* ThirdInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E1CAF2682082600D8140B /* ThirdInstructions.swift */; };
+		6D5E1CB226820CCE00D8140B /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E1CB126820CCE00D8140B /* MainScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17DD25B1267AE6590041A354 /* SalfokApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalfokApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DD25B4267AE6590041A354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17DD25B6267AE6590041A354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		17DD25B8267AE6590041A354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		17DD25BB267AE6590041A354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17DD25BE267AE6590041A354 /* SalfokApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SalfokApp.xcdatamodel; sourceTree = "<group>"; };
 		17DD25C0267AE65A0041A354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17DD25C3267AE65A0041A354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17DD25C5267AE65A0041A354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D29BFE82681125B007411EA /* Salfok Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Salfok Icon.png"; path = "Assets.xcassets/Salfok Icon.imageset/Salfok Icon.png"; sourceTree = "<group>"; };
+		6D5E1CA92681F63400D8140B /* FirstInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInstructions.swift; sourceTree = "<group>"; };
+		6D5E1CAD2681FBD300D8140B /* SecondInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInstructions.swift; sourceTree = "<group>"; };
+		6D5E1CAF2682082600D8140B /* ThirdInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInstructions.swift; sourceTree = "<group>"; };
+		6D5E1CB126820CCE00D8140B /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +68,16 @@
 			children = (
 				17DD25B4267AE6590041A354 /* AppDelegate.swift */,
 				17DD25B6267AE6590041A354 /* SceneDelegate.swift */,
-				17DD25B8267AE6590041A354 /* ViewController.swift */,
+				6D5E1CA92681F63400D8140B /* FirstInstructions.swift */,
+				6D5E1CAD2681FBD300D8140B /* SecondInstructions.swift */,
 				17DD25BA267AE6590041A354 /* Main.storyboard */,
 				17DD25C0267AE65A0041A354 /* Assets.xcassets */,
 				17DD25C2267AE65A0041A354 /* LaunchScreen.storyboard */,
 				17DD25C5267AE65A0041A354 /* Info.plist */,
+				6D29BFE82681125B007411EA /* Salfok Icon.png */,
 				17DD25BD267AE6590041A354 /* SalfokApp.xcdatamodeld */,
+				6D5E1CAF2682082600D8140B /* ThirdInstructions.swift */,
+				6D5E1CB126820CCE00D8140B /* MainScreen.swift */,
 			);
 			path = SalfokApp;
 			sourceTree = "<group>";
@@ -130,6 +142,7 @@
 				17DD25C4267AE65A0041A354 /* LaunchScreen.storyboard in Resources */,
 				17DD25C1267AE65A0041A354 /* Assets.xcassets in Resources */,
 				17DD25BC267AE6590041A354 /* Main.storyboard in Resources */,
+				6D29BFE92681125B007411EA /* Salfok Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17DD25B9267AE6590041A354 /* ViewController.swift in Sources */,
+				6D5E1CAE2681FBD300D8140B /* SecondInstructions.swift in Sources */,
+				6D5E1CB226820CCE00D8140B /* MainScreen.swift in Sources */,
+				6D5E1CAA2681F63400D8140B /* FirstInstructions.swift in Sources */,
 				17DD25B5267AE6590041A354 /* AppDelegate.swift in Sources */,
 				17DD25B7267AE6590041A354 /* SceneDelegate.swift in Sources */,
+				6D5E1CB02682082600D8140B /* ThirdInstructions.swift in Sources */,
 				17DD25BF267AE6590041A354 /* SalfokApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
