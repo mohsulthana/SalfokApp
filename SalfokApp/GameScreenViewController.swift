@@ -69,8 +69,6 @@ class GameScreenViewController: UIViewController {
             secondString = "0\(second)"
         }
         
-//        let decisecond = String(format: "%.1f", counter).components(separatedBy: ".").last!
-        
         let animation:CATransition = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name:
             CAMediaTimingFunctionName.easeInEaseOut)
@@ -82,11 +80,19 @@ class GameScreenViewController: UIViewController {
         
         if minute == 0 && second == 0 {
             timer.invalidate()
-            counter = 6000.0
+            counter = 60.0
             
+            _ = pointView.text
+            _ = pointCorrect
+            _ = pointIncorrect
             let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
+            
+            vc.takeScore = point
+            vc.takeInccorect = pointIncorrect
+            vc.takeCorrect = pointCorrect
+            
             vc.modalPresentationStyle = .fullScreen
-//            present(vc,animated: true)
+            present(vc,animated: true)
         }
     }
     
@@ -98,8 +104,12 @@ class GameScreenViewController: UIViewController {
         let randomElem = alphabet.randomElement()
         
         if lastValue! == containerHuruf[n] {
+            point += 10
+            pointCorrect += 1
+            pointView.text = "\(point)"
             print("Benar")
         } else {
+            pointIncorrect += 1
             print("Salah")
         }
         containerHuruf.append(randomElem!)
@@ -120,8 +130,12 @@ class GameScreenViewController: UIViewController {
         let randomElem = alphabet.randomElement()
         
         if lastValue! != containerHuruf[n] {
+            point += 10
+            pointCorrect += 1
+            pointView.text = "\(point)"
             print("Benar")
         } else {
+            pointIncorrect += 1
             print("Salah")
         }
         containerHuruf.append(randomElem!)
