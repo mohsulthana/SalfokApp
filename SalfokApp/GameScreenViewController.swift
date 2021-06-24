@@ -94,11 +94,21 @@ class GameScreenViewController: UIViewController {
         
         if minute == 0 && second == 0 {
             timer.invalidate()
+            counter = 60.0
+                        
+            let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
+            vc.modalPresentationStyle = .fullScreen
+            //            present(vc,animated: true)
+                        
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromRight
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+            view.window!.layer.add(transition, forKey: kCATransition)
+            present(vc, animated: false, completion: nil)
             counter = 6000.0
             transferScore()
-//            let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
-//            vc.modalPresentationStyle = .fullScreen
-////            present(vc,animated: true)
         }
     }
     
