@@ -392,17 +392,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QG1-Yl-x49">
-                                <rect key="frame" x="168" y="531" width="64" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="startToPlay:" destination="yZM-xd-kIv" eventType="touchUpInside" id="vzL-bL-C7h"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-lO-pJ6">
                                 <rect key="frame" x="164" y="88" width="62" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -424,21 +413,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe to Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93x-pA-rmz">
-                                <rect key="frame" x="126" y="745" width="139" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bVa-NV-vQg"/>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="SwipeToContinue" destination="93x-pA-rmz" id="gni-1Z-PoZ"/>
                         <outlet property="differentButton" destination="FCo-Yz-oyK" id="lcY-7F-Ztk"/>
-                        <outlet property="fakeButton" destination="QG1-Yl-x49" id="h56-Su-58p"/>
                         <outlet property="hurufLabel" destination="QOx-LR-ImW" id="7rl-NZ-4Tl"/>
                         <outlet property="pointView" destination="GFb-LC-yaD" id="rLT-3N-W2q"/>
                         <outlet property="sameButton" destination="8jb-Md-EWR" id="iF8-3I-iti"/>

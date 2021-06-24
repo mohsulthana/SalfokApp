@@ -14,7 +14,6 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var fakeButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var sameButton: UIButton!
-    @IBOutlet weak var SwipeToContinue: UILabel!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
     
@@ -96,18 +95,17 @@ class GameScreenViewController: UIViewController {
             timer.invalidate()
             counter = 60.0
                         
-            let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
-            vc.modalPresentationStyle = .fullScreen
+                        let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
+                        vc.modalPresentationStyle = .fullScreen
             //            present(vc,animated: true)
                         
-            let transition = CATransition()
-            transition.duration = 0.5
-            transition.type = CATransitionType.push
-            transition.subtype = CATransitionSubtype.fromRight
-            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-            view.window!.layer.add(transition, forKey: kCATransition)
-            present(vc, animated: false, completion: nil)
-            counter = 6000.0
+                        let transition = CATransition()
+                        transition.duration = 0.5
+                        transition.type = CATransitionType.push
+                        transition.subtype = CATransitionSubtype.fromRight
+                        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+                        view.window!.layer.add(transition, forKey: kCATransition)
+                        present(vc, animated: false, completion: nil)
             transferScore()
         }
     }
