@@ -180,7 +180,7 @@ class GameScreenViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func bgSound(){
-       bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: "time2", ofType: "mpeg")!)
+        bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: "time2", ofType: "m4a")!)
        do {
            guard let uri = bgSoundURI else {return}
            bgAudioPlayer = try AVAudioPlayer(contentsOf: uri)
