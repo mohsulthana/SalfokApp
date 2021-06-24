@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameScreenViewController: UIViewController {
 
+    @IBOutlet weak var pointView: UILabel!
     @IBOutlet weak var fakeButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var sameButton: UIButton!
-    @IBOutlet weak var SwipeToContinue: UILabel!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
     
@@ -23,8 +24,15 @@ class GameScreenViewController: UIViewController {
     var timer = Timer()
     var currentHuruf: String = ""
     
+    var bgSoundURI: URL?
+    var bgAudioPlayer = AVAudioPlayer()
+    var point :Int = 0
+    var pointCorrect :Int = 0
+    var pointIncorrect :Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+          
         self.sameButton.isHidden = true
         self.differentButton.isHidden = true
         sameButton.layer.cornerRadius = 15
@@ -38,10 +46,12 @@ class GameScreenViewController: UIViewController {
     }
     
     @IBAction func startToPlay() {
+        bgSound()
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
     }
     
     @objc func startGame() {
+        
         let randomElem = alphabet.randomElement()
         containerHuruf.append(randomElem!)
         
@@ -57,6 +67,7 @@ class GameScreenViewController: UIViewController {
     }
     
     @objc func runTimer() {
+        
         counter -=  0.1
         
         let flooredCounter = Int(floor(counter))
@@ -108,9 +119,11 @@ class GameScreenViewController: UIViewController {
             pointCorrect += 1
             pointView.text = "\(point)"
             print("Benar")
+            self.pointView.text = "\(point)"
         } else {
             pointIncorrect += 1
             print("Salah")
+            pointIncorrect += 1
         }
         containerHuruf.append(randomElem!)
         
@@ -133,6 +146,7 @@ class GameScreenViewController: UIViewController {
             point += 10
             pointCorrect += 1
             pointView.text = "\(point)"
+            pointCorrect += 1
             print("Benar")
         } else {
             pointIncorrect += 1
@@ -164,5 +178,27 @@ class GameScreenViewController: UIViewController {
         }))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    func bgSound(){
+       bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: "time2", ofType: "mpeg")!)
+       do {
+           guard let uri = bgSoundURI else {return}
+           bgAudioPlayer = try AVAudioPlayer(contentsOf: uri)
+           bgAudioPlayer.numberOfLoops = -1
+           bgAudioPlayer.play()
+          
+       } catch {
+           print("something went wrong")
+       }
+   }
+    func transferScore(){
+        let dataScore = pointView.text
+        let dataCorecct = pointCorrect
+        let dataIncorecct = pointIncorrect
+        let vct = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
+        vct.takeScore = point
+        vct.takeInccorect = pointIncorrect
+        vct.takeCorrect = pointCorrect
+        navigationController?.pushViewController(vct, animated: true)
     }
 }
