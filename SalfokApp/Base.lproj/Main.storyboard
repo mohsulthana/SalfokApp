@@ -420,6 +420,7 @@
                     <connections>
                         <outlet property="differentButton" destination="FCo-Yz-oyK" id="lcY-7F-Ztk"/>
                         <outlet property="hurufLabel" destination="QOx-LR-ImW" id="7rl-NZ-4Tl"/>
+                        <outlet property="pointView" destination="GFb-LC-yaD" id="rLT-3N-W2q"/>
                         <outlet property="sameButton" destination="8jb-Md-EWR" id="iF8-3I-iti"/>
                         <outlet property="timerLabel" destination="rl3-gq-9r3" id="ADo-2f-FRn"/>
                     </connections>
@@ -453,6 +454,9 @@
                                 <state key="normal" image="x.circle" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backToMainScreen:" destination="pwN-44-TdR" eventType="touchUpInside" id="OLq-0M-YWV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Performance Insight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b45-op-Ve7">
                                 <rect key="frame" x="30" y="125" width="316" height="38"/>
@@ -524,7 +528,11 @@
                         <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="closeSummaryButton" destination="5um-Rb-Igm" id="azb-Ja-u9h"/>
+                        <outlet property="correctView" destination="G3x-nA-KXv" id="SPp-jW-bUr"/>
+                        <outlet property="incorrectView" destination="Ppq-nA-oyB" id="DUq-eK-3rF"/>
                         <outlet property="playAgainButton" destination="pt5-aS-d4c" id="ADE-aI-Fqz"/>
+                        <outlet property="scoreView" destination="3YU-8n-b9H" id="yUe-5K-kMq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hce-XP-oIv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
