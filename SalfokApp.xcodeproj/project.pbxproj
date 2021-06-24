@@ -21,6 +21,8 @@
 		8E1D07C82682E32400EF3AE0 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D07C72682E32400EF3AE0 /* GameScreenViewController.swift */; };
 		8E1D07CA2682E35600EF3AE0 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D07C92682E35600EF3AE0 /* SummaryViewController.swift */; };
 		8E1D07CC2683008100EF3AE0 /* ReadyGo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D07CB2683008100EF3AE0 /* ReadyGo.swift */; };
+		E0888802268420ED00209731 /* time2.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = E0888800268420ED00209731 /* time2.mpeg */; };
+		E0888803268420ED00209731 /* time1.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = E0888801268420ED00209731 /* time1.mpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		8E1D07C72682E32400EF3AE0 /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
 		8E1D07C92682E35600EF3AE0 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		8E1D07CB2683008100EF3AE0 /* ReadyGo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyGo.swift; sourceTree = "<group>"; };
+		E0888800268420ED00209731 /* time2.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; name = time2.mpeg; path = ../../../../../Desktop/time2.mpeg; sourceTree = "<group>"; };
+		E0888801268420ED00209731 /* time1.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; name = time1.mpeg; path = ../../../../../Desktop/time1.mpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 			children = (
 				17DD25B4267AE6590041A354 /* AppDelegate.swift */,
 				17DD25B6267AE6590041A354 /* SceneDelegate.swift */,
+				E08887FF268420B600209731 /* New Group */,
 				6D5E1CA92681F63400D8140B /* FirstInstructions.swift */,
 				6D5E1CAD2681FBD300D8140B /* SecondInstructions.swift */,
 				17DD25BA267AE6590041A354 /* Main.storyboard */,
@@ -89,6 +94,15 @@
 				8E1D07CB2683008100EF3AE0 /* ReadyGo.swift */,
 			);
 			path = SalfokApp;
+			sourceTree = "<group>";
+		};
+		E08887FF268420B600209731 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				E0888801268420ED00209731 /* time1.mpeg */,
+				E0888800268420ED00209731 /* time2.mpeg */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +165,8 @@
 				17DD25C4267AE65A0041A354 /* LaunchScreen.storyboard in Resources */,
 				17DD25C1267AE65A0041A354 /* Assets.xcassets in Resources */,
 				17DD25BC267AE6590041A354 /* Main.storyboard in Resources */,
+				E0888803268420ED00209731 /* time1.mpeg in Resources */,
+				E0888802268420ED00209731 /* time2.mpeg in Resources */,
 				6D29BFE92681125B007411EA /* Salfok Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45N4YCBZCJ;
 				INFOPLIST_FILE = SalfokApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,6 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45N4YCBZCJ;
 				INFOPLIST_FILE = SalfokApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

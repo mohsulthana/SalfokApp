@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameScreenViewController: UIViewController {
 
@@ -23,8 +24,12 @@ class GameScreenViewController: UIViewController {
     var timer = Timer()
     var currentHuruf: String = ""
     
+    var bgSoundURI: URL?
+    var bgAudioPlayer = AVAudioPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.sameButton.isHidden = true
         self.differentButton.isHidden = true
         sameButton.layer.cornerRadius = 15
@@ -42,6 +47,7 @@ class GameScreenViewController: UIViewController {
     }
     
     @objc func startGame() {
+        bgSound()
         let randomElem = alphabet.randomElement()
         containerHuruf.append(randomElem!)
         
@@ -57,6 +63,7 @@ class GameScreenViewController: UIViewController {
     }
     
     @objc func runTimer() {
+        
         counter -=  0.1
         
         let flooredCounter = Int(floor(counter))
@@ -151,4 +158,16 @@ class GameScreenViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    func bgSound(){
+       bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: "time2", ofType: "mpeg")!)
+       do {
+           guard let uri = bgSoundURI else {return}
+           bgAudioPlayer = try AVAudioPlayer(contentsOf: uri)
+           bgAudioPlayer.numberOfLoops = -1
+           bgAudioPlayer.play()
+          
+       } catch {
+           print("something went wrong")
+       }
+   }
 }
