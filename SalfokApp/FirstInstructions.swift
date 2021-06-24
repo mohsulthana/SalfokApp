@@ -23,7 +23,7 @@ class FirstInstructions: UIViewController {
             print("swiped left")
 //            performSegue(withIdentifier: "Second Instructions", sender: self)
             
-            let vc = storyboard?.instantiateViewController(identifier: "firstLetterScreen") as! SecondInstructions
+            let vc = storyboard?.instantiateViewController(identifier: "readyGo") as! ReadyGo
             vc.modalPresentationStyle = .fullScreen
 //            present(vc,animated: true)
             
