@@ -8,6 +8,10 @@
 import UIKit
 import AVFoundation
 
+//protocol backToGameScreen {
+//    func continueToPlay(remainingTime: Double)
+//}
+
 class GameScreenViewController: UIViewController {
 
     @IBOutlet weak var pointView: UILabel!
@@ -17,20 +21,23 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
     @IBOutlet weak var inisialisasiLabel: UILabel!
+    @IBOutlet weak var infoButton: UIButton!
     
     var containerHuruf = [String]()
     var alphabet = ["a","c","e","o"]
-
-    var counter = 60.0
+    var remainingSecond: Double!
+    static var counter: Double!
+    var lastCounter: Double!
     var timer = Timer()
     var currentHuruf: String = ""
-    
+//    var selectionDelegate: backToGameScreen!
     var bgSoundURI: URL?
     var bgAudioPlayer = AVAudioPlayer()
     var point :Int = 0
     var highScore: Int = 0
     var pointCorrect :Int = 0
     var pointIncorrect :Int = 0
+//    static var musicAfterInfo: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +59,11 @@ class GameScreenViewController: UIViewController {
         if defaults.object(forKey: "highscore") != nil {
             highScore = defaults.integer(forKey: "highscore")
         }
+        
+//        if GameScreenViewController.musicAfterInfo == true{
+//            bgSound()
+//        }
+        
     }
     
     @IBAction func startToPlay() {
@@ -84,11 +96,11 @@ class GameScreenViewController: UIViewController {
     }
     
     @objc func runTimer() {
-        counter -=  0.1
+        GameScreenViewController.counter -=  0.1
         
         inisialisasiLabel.isHidden = true
         
-        let flooredCounter = Int(floor(counter))
+        let flooredCounter = Int(floor(GameScreenViewController.counter))
         let minute = flooredCounter / 60
         let minuteString = "0\(minute)"
         
@@ -226,4 +238,28 @@ class GameScreenViewController: UIViewController {
         vct.takeCorrect = pointCorrect
         navigationController?.pushViewController(vct, animated: true)
     }
+    
+    
+    @IBAction func goToInfo(_ sender: UIButton) {
+//        self.bgAudioPlayer.stop()
+        lastCounter = 60.0 - GameScreenViewController.counter
+        FirstInstructions.remainingSecond = 60.0 - lastCounter
+//        selectionDelegate.continueToPlay(remainingTime: remainingSecond)
+        FirstInstructions.isNotFromMain = true
+        
+        let selectionVC = storyboard?.instantiateViewController(withIdentifier: "info") as! FirstInstructions
+       
+        selectionVC.modalPresentationStyle = .fullScreen
+//            present(vc,animated: true)
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(selectionVC, animated: false, completion: nil)
+        
+    }
+    
 }

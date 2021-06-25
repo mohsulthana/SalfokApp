@@ -45,6 +45,20 @@ class SummaryViewController: UIViewController {
     
     
     @IBAction func goToInfo(_ sender: Any) {
+        FirstInstructions.isNotFromMain = true
+        
+        let selectionVC = storyboard?.instantiateViewController(withIdentifier: "info") as! FirstInstructions
+       
+        selectionVC.modalPresentationStyle = .fullScreen
+//            present(vc,animated: true)
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(selectionVC, animated: false, completion: nil)
     }
     
 

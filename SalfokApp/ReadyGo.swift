@@ -30,7 +30,7 @@ class ReadyGo: UIViewController {
     @objc func timerAction() {
         counter -= 1
         lblTimer.text = "\(counter)"
-        
+        GameScreenViewController.counter = 60.0
         if counter <= 0{
             timer.invalidate()
             lblTimer.text = " "

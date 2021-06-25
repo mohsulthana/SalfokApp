@@ -24,6 +24,9 @@ class MainScreen: UIViewController {
     }
     
     @IBAction func startPlayToInfo(_ sender: Any) {
+        
+        FirstInstructions.isNotFromMain = false
+        
         let vc = storyboard?.instantiateViewController(identifier: "info") as! FirstInstructions
         vc.modalPresentationStyle = .fullScreen
 //            present(vc,animated: true)

@@ -7,9 +7,16 @@
 
 import UIKit
 
+
+
 class FirstInstructions: UIViewController {
 
+    
     @IBOutlet weak var closeButton: UIButton!
+    
+    static var isNotFromMain: Bool!
+    static var remainingSecond: Double!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,20 +28,38 @@ class FirstInstructions: UIViewController {
     
     @objc func swipeFunc(gesture:UISwipeGestureRecognizer) {
         if gesture.direction == .left {
-            print("swiped left")
-//            performSegue(withIdentifier: "Second Instructions", sender: self)
             
-            let vc = storyboard?.instantiateViewController(identifier: "readyGo") as! ReadyGo
-            vc.modalPresentationStyle = .fullScreen
-//            present(vc,animated: true)
-            
-            let transition = CATransition()
-            transition.duration = 0.5
-            transition.type = CATransitionType.push
-            transition.subtype = CATransitionSubtype.fromRight
-            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-            view.window!.layer.add(transition, forKey: kCATransition)
-            present(vc, animated: false, completion: nil)
+            if FirstInstructions.isNotFromMain == false{
+                print("swiped left")
+    //            performSegue(withIdentifier: "Second Instructions", sender: self)
+                
+                let vc = storyboard?.instantiateViewController(identifier: "readyGo") as! ReadyGo
+                vc.modalPresentationStyle = .fullScreen
+    //            present(vc,animated: true)
+                
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.type = CATransitionType.push
+                transition.subtype = CATransitionSubtype.fromRight
+                transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+                view.window!.layer.add(transition, forKey: kCATransition)
+                present(vc, animated: false, completion: nil)
+            }else{
+//                func continueToPlay(remainingTime: Double){
+//                    GameScreenViewController.counter = remainingTime
+//                }
+                GameScreenViewController.counter = FirstInstructions.remainingSecond
+//                GameScreenViewController.musicAfterInfo = true
+                
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.type = CATransitionType.push
+                transition.subtype = CATransitionSubtype.fromRight
+                transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+                view.window!.layer.add(transition, forKey: kCATransition)
+                dismiss(animated: false, completion: nil)
+            }
+           
             
         }
 

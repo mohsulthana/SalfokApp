@@ -310,6 +310,9 @@
                                 <state key="normal" image="info.circle" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="goToInfo:" destination="yZM-xd-kIv" eventType="touchUpInside" id="mxk-Dg-7rE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-lO-pJ6">
                                 <rect key="frame" x="169.66666666666666" y="88" width="50.666666666666657" height="20"/>
@@ -368,6 +371,7 @@
                     <connections>
                         <outlet property="differentButton" destination="FCo-Yz-oyK" id="lcY-7F-Ztk"/>
                         <outlet property="hurufLabel" destination="AAh-4f-MjX" id="VUb-Z5-HXj"/>
+                        <outlet property="infoButton" destination="KMd-4P-M2w" id="yJ8-R9-crT"/>
                         <outlet property="inisialisasiLabel" destination="Gdf-7X-CnM" id="yBi-d7-PkF"/>
                         <outlet property="pointView" destination="GFb-LC-yaD" id="msz-QQ-bUR"/>
                         <outlet property="sameButton" destination="8jb-Md-EWR" id="iF8-3I-iti"/>
