@@ -21,7 +21,7 @@ class GameScreenViewController: UIViewController {
     var containerHuruf = [String]()
     var alphabet = ["a","c","e","o"]
 
-    var counter = 10.0
+    var counter = 60.0
     var timer = Timer()
     var currentHuruf: String = ""
     
@@ -86,6 +86,8 @@ class GameScreenViewController: UIViewController {
     @objc func runTimer() {
         counter -=  0.1
         
+        inisialisasiLabel.isHidden = true
+        
         let flooredCounter = Int(floor(counter))
         let minute = flooredCounter / 60
         let minuteString = "0\(minute)"
@@ -106,6 +108,7 @@ class GameScreenViewController: UIViewController {
         
         if minute == 0 && second == 0 {
             timer.invalidate()
+            bgAudioPlayer.stop()
             
             let defaults = UserDefaults.standard
             
@@ -192,6 +195,7 @@ class GameScreenViewController: UIViewController {
             let vc = self.storyboard?.instantiateViewController(identifier: "main") as! MainScreen
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
+            self.bgAudioPlayer.stop()
         }))
         
         alert.addAction(UIAlertAction(title: "Continue Game", style: UIAlertAction.Style.cancel, handler: {_ in
