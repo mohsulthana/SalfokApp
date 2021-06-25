@@ -9,7 +9,8 @@ import UIKit
 
 class SummaryViewController: UIViewController {
 
-    @IBOutlet weak var closeSummaryButton: UIButton!
+    
+    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var scoreView: UILabel!
     @IBOutlet weak var correctView: UILabel!
@@ -40,6 +41,10 @@ class SummaryViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    
+    @IBAction func goToInfo(_ sender: Any) {
     }
     
 
