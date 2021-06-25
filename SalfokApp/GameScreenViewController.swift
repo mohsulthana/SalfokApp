@@ -16,17 +16,19 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var sameButton: UIButton!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
+    @IBOutlet weak var inisialisasiLabel: UILabel!
     
     var containerHuruf = [String]()
-    var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    var alphabet = ["a","c","e","o"]
 
-    var counter = 60.0
+    var counter = 10.0
     var timer = Timer()
     var currentHuruf: String = ""
     
     var bgSoundURI: URL?
     var bgAudioPlayer = AVAudioPlayer()
     var point :Int = 0
+    var highScore: Int = 0
     var pointCorrect :Int = 0
     var pointIncorrect :Int = 0
     
@@ -43,6 +45,13 @@ class GameScreenViewController: UIViewController {
                 selector: #selector(GameScreenViewController.startGame),
                 userInfo: nil,
                 repeats: true)
+        
+        let defaults = UserDefaults.standard
+        
+        // check if there's a highscore
+        if defaults.object(forKey: "highscore") != nil {
+            highScore = defaults.integer(forKey: "highscore")
+        }
     }
     
     @IBAction func startToPlay() {
@@ -54,6 +63,14 @@ class GameScreenViewController: UIViewController {
         
         let randomElem = alphabet.randomElement()
         containerHuruf.append(randomElem!)
+        
+        if containerHuruf.count == 1{
+            self.inisialisasiLabel.isHidden = false
+            inisialisasiLabel.text = "this is the first letter"
+        }else if containerHuruf.count == 2{
+            self.inisialisasiLabel.isHidden = false
+            inisialisasiLabel.text = "this is the second letter"
+        }
         
         if containerHuruf.count > 2 {
             timer.invalidate()
@@ -67,7 +84,6 @@ class GameScreenViewController: UIViewController {
     }
     
     @objc func runTimer() {
-        
         counter -=  0.1
         
         let flooredCounter = Int(floor(counter))
@@ -81,8 +97,7 @@ class GameScreenViewController: UIViewController {
         }
         
         let animation:CATransition = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name:
-            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.type = CATransitionType.fade
         animation.subtype = CATransitionSubtype.fromTop
         self.timerLabel.text = "\(minuteString):\(secondString)"
@@ -91,7 +106,13 @@ class GameScreenViewController: UIViewController {
         
         if minute == 0 && second == 0 {
             timer.invalidate()
-            counter = 60.0
+            
+            let defaults = UserDefaults.standard
+            
+            // cek ketika score sekarang lebih tinggi dari high score
+            if point > highScore || defaults.object(forKey: "highscore") == nil {
+                defaults.set(point, forKey: "highscore")
+            }
             
             _ = pointView.text
             _ = pointCorrect
