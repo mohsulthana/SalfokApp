@@ -343,7 +343,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="READY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iuk-dA-k3Q">
                                 <rect key="frame" x="51" y="386" width="298" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Iuk-dA-k3Q" secondAttribute="height" multiplier="25:9" constant="14" id="HPI-bw-bzz"/>
                                 </constraints>
