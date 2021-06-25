@@ -17,6 +17,7 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
     @IBOutlet weak var inisialisasiLabel: UILabel!
+    @IBOutlet weak var whiteRectangle: UIImageView!
     
     var containerHuruf = [String]()
     var alphabet = ["a","c","e","o"]
@@ -27,6 +28,7 @@ class GameScreenViewController: UIViewController {
     
     var bgSoundURI: URL?
     var bgAudioPlayer = AVAudioPlayer()
+    let generator = UINotificationFeedbackGenerator()
     var point :Int = 0
     var highScore: Int = 0
     var pointCorrect :Int = 0
@@ -40,7 +42,7 @@ class GameScreenViewController: UIViewController {
         sameButton.layer.cornerRadius = 15
         differentButton.layer.cornerRadius = 15
         
-        timer = Timer.scheduledTimer(timeInterval: 3,
+        timer = Timer.scheduledTimer(timeInterval: 1,
                 target: self,
                 selector: #selector(GameScreenViewController.startGame),
                 userInfo: nil,
@@ -133,7 +135,6 @@ class GameScreenViewController: UIViewController {
     
     
     @IBAction func sameButton(_ sender: Any) {
-        
         let n = containerHuruf.count - 3
         let lastValue = containerHuruf.last
         let randomElem = alphabet.randomElement()
@@ -142,12 +143,15 @@ class GameScreenViewController: UIViewController {
             point += 10
             pointCorrect += 1
             pointView.text = "\(point)"
-            print("Benar")
             self.pointView.text = "\(point)"
+            generator.notificationOccurred(.success)
+            whiteRectangle.image = UIImage(named: "RectangleHijau")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
         } else {
             pointIncorrect += 1
-            print("Salah")
-            pointIncorrect += 1
+            generator.notificationOccurred(.error)
+            whiteRectangle.image = UIImage(named: "RectangleMerah")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
         }
         containerHuruf.append(randomElem!)
         
@@ -160,6 +164,9 @@ class GameScreenViewController: UIViewController {
         self.hurufLabel.layer.add(animation, forKey: CATransitionType.push.rawValue)
     }
     
+    @objc func changeBackgroundDefault() {
+        whiteRectangle.image = UIImage(named: "WhiteRectangle-1")
+    }
     
     @IBAction func differentButton(_ sender: Any) {
         let n = containerHuruf.count - 3
@@ -171,10 +178,15 @@ class GameScreenViewController: UIViewController {
             pointCorrect += 1
             pointView.text = "\(point)"
             pointCorrect += 1
-            print("Benar")
+            generator.notificationOccurred(.success)
+            whiteRectangle.image = UIImage(named: "RectangleHijau")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
         } else {
             pointIncorrect += 1
-            print("Salah")
+            generator.notificationOccurred(.error)
+            whiteRectangle.image = UIImage(named: "RectangleMerah")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
+            
         }
         containerHuruf.append(randomElem!)
 
@@ -185,6 +197,7 @@ class GameScreenViewController: UIViewController {
         self.hurufLabel.text = randomElem
         animation.duration = 0.25
         self.hurufLabel.layer.add(animation, forKey: CATransitionType.push.rawValue)
+        
     }
     
     @IBAction func pauseGame(_ sender: Any) {
@@ -217,9 +230,9 @@ class GameScreenViewController: UIViewController {
        }
    }
     func transferScore(){
-        let dataScore = pointView.text
-        let dataCorecct = pointCorrect
-        let dataIncorecct = pointIncorrect
+        _ = pointView.text
+        _ = pointCorrect
+        _ = pointIncorrect
         let vct = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
         vct.takeScore = point
         vct.takeInccorect = pointIncorrect
