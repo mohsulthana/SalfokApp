@@ -16,9 +16,10 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var sameButton: UIButton!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
+    @IBOutlet weak var inisialisasiLabel: UILabel!
     
     var containerHuruf = [String]()
-    var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    var alphabet = ["a","c","e","o"]
 
     var counter = 60.0
     var timer = Timer()
@@ -54,6 +55,14 @@ class GameScreenViewController: UIViewController {
         
         let randomElem = alphabet.randomElement()
         containerHuruf.append(randomElem!)
+        
+        if containerHuruf.count == 1{
+            self.inisialisasiLabel.isHidden = false
+            inisialisasiLabel.text = "this is the first letter"
+        }else if containerHuruf.count == 2{
+            self.inisialisasiLabel.isHidden = false
+            inisialisasiLabel.text = "this is the second letter"
+        }
         
         if containerHuruf.count > 2 {
             timer.invalidate()
