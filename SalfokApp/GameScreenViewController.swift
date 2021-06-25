@@ -9,14 +9,17 @@ import UIKit
 import AVFoundation
 
 class GameScreenViewController: UIViewController {
-
+    
+    @IBOutlet var notif: UIImageView!
+    @IBOutlet var vwContainer: UIView!
     @IBOutlet weak var pointView: UILabel!
     @IBOutlet weak var fakeButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var sameButton: UIButton!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
-    
+    let tapNotif = UITapGestureRecognizer(target:self, action: #selector (tapView(_:)))
+
     var containerHuruf = [String]()
     var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
@@ -30,9 +33,20 @@ class GameScreenViewController: UIViewController {
     var pointCorrect :Int = 0
     var pointIncorrect :Int = 0
     
+    var image =
+        ["notif1.png","notif2.png","notif3.png","notif4.png","notif5.png","notif6.png"]
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-          
+        
+        notif.addGestureRecognizer(tapNotif)
+        notif.isUserInteractionEnabled = true
+        
+        self.vwContainer.alpha = 0.0
+        self.vwContainer.layer.cornerRadius = 5.0
+        
+
         self.sameButton.isHidden = true
         self.differentButton.isHidden = true
         sameButton.layer.cornerRadius = 15
@@ -43,11 +57,38 @@ class GameScreenViewController: UIViewController {
                 selector: #selector(GameScreenViewController.startGame),
                 userInfo: nil,
                 repeats: true)
+    
     }
+     
+    @objc func tapView(_ sender: UITapGestureRecognizer) {
+        print("tap is succes!!")
+    }
+    
     
     @IBAction func startToPlay() {
         bgSound()
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+       
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+    }
+    
+    
+    @objc func notification() {
+        
+        let number = Int.random(in: 0..<6)
+        notif.image = UIImage(named: image[number])
+
+            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
+                self.vwContainer.alpha = 1.0
+
+            })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // Change `2.0` to the desired number of seconds.
+           // Code you want to be delayed
+            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
+                self.vwContainer.alpha = 0.0
+            })
+
+        }
+        
     }
     
     @objc func startGame() {
@@ -61,14 +102,16 @@ class GameScreenViewController: UIViewController {
             self.sameButton.isHidden = false
             self.differentButton.isHidden = false
             startToPlay()
+            
         } else {
             hurufLabel.text = randomElem
+           
         }
     }
     
     @objc func runTimer() {
         
-        counter -=  0.1
+        counter -=  1
         
         let flooredCounter = Int(floor(counter))
         let minute = flooredCounter / 60
@@ -76,11 +119,17 @@ class GameScreenViewController: UIViewController {
         
         let second = flooredCounter % 60
         var secondString = "\(second)"
+        
         if second < 10 {
             secondString = "0\(second)"
         }
         
-        let animation:CATransition = CATransition()
+        if second % 10 == 0 && second != 60  {
+            notification()
+            
+        }
+ 
+    let animation:CATransition = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name:
             CAMediaTimingFunctionName.easeInEaseOut)
         animation.type = CATransitionType.fade
