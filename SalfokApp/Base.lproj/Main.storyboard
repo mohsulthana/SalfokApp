@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZM-xd-kIv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZM-xd-kIv">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -356,8 +356,6 @@
                         <viewLayoutGuide key="safeArea" id="bVa-NV-vQg"/>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="DX4-Lb-ije" firstAttribute="centerX" secondItem="Wvq-dj-bTE" secondAttribute="centerX" id="Hub-hl-QJ3"/>
-                            <constraint firstItem="DX4-Lb-ije" firstAttribute="top" secondItem="bVa-NV-vQg" secondAttribute="top" constant="15" id="RWD-36-hPh"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="trailing" secondItem="XhP-q4-cpb" secondAttribute="trailing" constant="46" id="0XQ-PR-HSI"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="trailing" secondItem="FCo-Yz-oyK" secondAttribute="trailing" constant="35" id="3M1-GB-SuT"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="bottom" secondItem="8jb-Md-EWR" secondAttribute="bottom" constant="121" id="5TN-Sf-z7V"/>
@@ -366,7 +364,9 @@
                             <constraint firstItem="GFb-LC-yaD" firstAttribute="centerX" secondItem="ugD-lO-pJ6" secondAttribute="centerX" id="BPg-va-fbY"/>
                             <constraint firstItem="GBN-dQ-nrw" firstAttribute="centerX" secondItem="rl3-gq-9r3" secondAttribute="centerX" id="CkO-Pg-JNG"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="bottom" secondItem="FCo-Yz-oyK" secondAttribute="bottom" constant="121" id="EmU-VS-VUg"/>
+                            <constraint firstItem="DX4-Lb-ije" firstAttribute="centerX" secondItem="Wvq-dj-bTE" secondAttribute="centerX" id="Hub-hl-QJ3"/>
                             <constraint firstItem="8jb-Md-EWR" firstAttribute="leading" secondItem="bVa-NV-vQg" secondAttribute="leading" constant="35" id="Iyc-mC-ekn"/>
+                            <constraint firstItem="DX4-Lb-ije" firstAttribute="top" secondItem="bVa-NV-vQg" secondAttribute="top" constant="15" id="RWD-36-hPh"/>
                             <constraint firstItem="ugD-lO-pJ6" firstAttribute="top" secondItem="bVa-NV-vQg" secondAttribute="top" constant="44" id="cHc-vX-ktW"/>
                             <constraint firstItem="GBN-dQ-nrw" firstAttribute="top" secondItem="rl3-gq-9r3" secondAttribute="bottom" constant="11" id="diL-Tg-ogc"/>
                             <constraint firstItem="GBN-dQ-nrw" firstAttribute="leading" secondItem="bVa-NV-vQg" secondAttribute="leading" constant="77.666666666666686" id="ers-Yx-L6u"/>
@@ -382,13 +382,13 @@
                     <connections>
                         <outlet property="btnInfo" destination="KMd-4P-M2w" id="QJj-pX-dDR"/>
                         <outlet property="differentButton" destination="FCo-Yz-oyK" id="lcY-7F-Ztk"/>
-                        <outlet property="notif" destination="OnA-0g-ieg" id="QK8-U4-Kot"/>
-                        <outlet property="vwContainer" destination="DX4-Lb-ije" id="Tyk-PW-8XX"/>
                         <outlet property="hurufLabel" destination="AAh-4f-MjX" id="VUb-Z5-HXj"/>
                         <outlet property="inisialisasiLabel" destination="Gdf-7X-CnM" id="yBi-d7-PkF"/>
+                        <outlet property="notif" destination="OnA-0g-ieg" id="QK8-U4-Kot"/>
                         <outlet property="pointView" destination="GFb-LC-yaD" id="msz-QQ-bUR"/>
                         <outlet property="sameButton" destination="8jb-Md-EWR" id="iF8-3I-iti"/>
                         <outlet property="timerLabel" destination="rl3-gq-9r3" id="ADo-2f-FRn"/>
+                        <outlet property="vwContainer" destination="DX4-Lb-ije" id="Tyk-PW-8XX"/>
                         <outlet property="whiteRectangle" destination="GBN-dQ-nrw" id="My7-Ph-1fi"/>
                     </connections>
                 </viewController>

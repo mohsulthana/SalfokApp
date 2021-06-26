@@ -160,7 +160,7 @@ class GameScreenViewController: UIViewController {
 
     
     @objc func runTimer() {
-        counter -=  0.1
+        counter -=  1
         
         inisialisasiLabel.isHidden = true
         
