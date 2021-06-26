@@ -11,15 +11,14 @@ import AVFoundation
 class GameScreenViewController: UIViewController {
     
     @IBOutlet var notif: UIImageView!
+    @IBOutlet var btnInfo: UIButton!
     @IBOutlet var vwContainer: UIView!
     @IBOutlet weak var pointView: UILabel!
-    @IBOutlet weak var fakeButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var sameButton: UIButton!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
-    let tapNotif = UITapGestureRecognizer(target:self, action: #selector (tapView(_:)))
-
+    
     var containerHuruf = [String]()
     var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
@@ -28,24 +27,30 @@ class GameScreenViewController: UIViewController {
     var currentHuruf: String = ""
     
     var bgSoundURI: URL?
+    var audioNotification: URL?
     var bgAudioPlayer = AVAudioPlayer()
+    var bgAudioNotif = AVAudioPlayer()
     var point :Int = 0
     var pointCorrect :Int = 0
     var pointIncorrect :Int = 0
     
+
     var image =
-        ["notif1.png","notif2.png","notif3.png","notif4.png","notif5.png","notif6.png"]
-   
+        ["notifA.png","notifB.png","notifC.png","notifD.png","notifE.png","notifF.png"]
+    var backSound =
+        ["time2","bgsound1","bgsound2","bgsound3","bgsound4"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notif.addGestureRecognizer(tapNotif)
-        notif.isUserInteractionEnabled = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapView(tapGestureRecognizer:)))
+            notif.isUserInteractionEnabled = true
+            notif.addGestureRecognizer(tapGestureRecognizer)
         
         self.vwContainer.alpha = 0.0
         self.vwContainer.layer.cornerRadius = 5.0
-        
 
         self.sameButton.isHidden = true
         self.differentButton.isHidden = true
@@ -57,15 +62,25 @@ class GameScreenViewController: UIViewController {
                 selector: #selector(GameScreenViewController.startGame),
                 userInfo: nil,
                 repeats: true)
-    
     }
-     
-    @objc func tapView(_ sender: UITapGestureRecognizer) {
-        print("tap is succes!!")
+    
+    
+    
+    @objc func tapView(tapGestureRecognizer: UITapGestureRecognizer) {
+               
+        let alert = UIAlertController(title: "Oh, No!!", message: "You just got distracted 😱", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default) {
+                (action) in
+                print(action)
+            }
+        alert.addAction(okayAction)
+        present(alert, animated: true, completion: nil)
+        print("tap is success!!")
     }
     
     
     @IBAction func startToPlay() {
+        
         bgSound()
        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
@@ -76,15 +91,30 @@ class GameScreenViewController: UIViewController {
         
         let number = Int.random(in: 0..<6)
         notif.image = UIImage(named: image[number])
+        
+        
+        audioNotification = URL(fileURLWithPath: Bundle.main.path(forResource: "audioNotif1", ofType: "mp3")!)
+           do {
+               guard let uri = audioNotification else {return}
+               bgAudioNotif = try AVAudioPlayer(contentsOf: uri)
+               bgAudioNotif.play()
 
+           } catch {
+               print("something went wrong")
+           }
+        
+        //heptic function
+        let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.warning)
+        
             UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
                 self.vwContainer.alpha = 1.0
-
             })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // Change `2.0` to the desired number of seconds.
-           // Code you want to be delayed
-            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
-                self.vwContainer.alpha = 0.0
+        
+            DispatchQueue.main.asyncAfter(deadline: .now() + 04.0) { // Change `2.0` to the desired number of seconds.
+               // Code you want to be delayed
+                UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
+                    self.vwContainer.alpha = 0.0
             })
 
         }
@@ -108,6 +138,7 @@ class GameScreenViewController: UIViewController {
            
         }
     }
+
     
     @objc func runTimer() {
         
@@ -124,9 +155,11 @@ class GameScreenViewController: UIViewController {
             secondString = "0\(second)"
         }
         
-        if second % 10 == 0 && second != 60  {
+        if second % 12 == 0 && second != 60  {
             notification()
-            
+            bgAudioPlayer.pause()
+        }else{
+            bgAudioPlayer.play()
         }
  
     let animation:CATransition = CATransition()
@@ -229,7 +262,16 @@ class GameScreenViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func bgSound(){
-        bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: "time2", ofType: "m4a")!)
+        
+        let number = Int.random(in: 0..<5)
+        var type = ""
+        if number == 0 {
+            type = "m4a"
+        }else{
+            type = "mp3"
+        }
+        
+        bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: backSound[number], ofType: type)!)
        do {
            guard let uri = bgSoundURI else {return}
            bgAudioPlayer = try AVAudioPlayer(contentsOf: uri)
