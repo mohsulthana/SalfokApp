@@ -10,12 +10,17 @@ import UIKit
 class MainScreen: UIViewController {
 
     @IBOutlet weak var goButton: UIButton!
+    var highScore: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         goButton.layer.cornerRadius = 15
-
+        
+        let defaults = UserDefaults.standard
+        
+        if defaults.object(forKey: "highscore") != nil {
+            highScore = defaults.integer(forKey: "highscore")
+        }
     }
     
     @IBAction func startPlayToInfo(_ sender: Any) {

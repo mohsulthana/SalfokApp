@@ -9,6 +9,7 @@ import UIKit
 
 class FirstInstructions: UIViewController {
 
+    @IBOutlet weak var closeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,11 +36,24 @@ class FirstInstructions: UIViewController {
             view.window!.layer.add(transition, forKey: kCATransition)
             present(vc, animated: false, completion: nil)
             
-            
         }
+
     }
     
+    @IBAction func goToMainscreen(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you sure want to quit?", message: "you will be back to mainscreen", preferredStyle: UIAlertController.Style.alert)
 
+        alert.addAction(UIAlertAction(title: "Quit", style: UIAlertAction.Style.default, handler: {item in
+            let vc = self.storyboard?.instantiateViewController(identifier: "main") as! MainScreen
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Back to How to Play", style: UIAlertAction.Style.cancel, handler:nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

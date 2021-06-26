@@ -18,9 +18,11 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var sameButton: UIButton!
     @IBOutlet weak var differentButton: UIButton!
     @IBOutlet weak var hurufLabel: UILabel!
+    @IBOutlet weak var inisialisasiLabel: UILabel!
+    @IBOutlet weak var whiteRectangle: UIImageView!
     
     var containerHuruf = [String]()
-    var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    var alphabet = ["a","c","e","o"]
 
     var counter = 60.0
     var timer = Timer()
@@ -30,7 +32,9 @@ class GameScreenViewController: UIViewController {
     var audioNotification: URL?
     var bgAudioPlayer = AVAudioPlayer()
     var bgAudioNotif = AVAudioPlayer()
+    let generator = UINotificationFeedbackGenerator()
     var point :Int = 0
+    var highScore: Int = 0
     var pointCorrect :Int = 0
     var pointIncorrect :Int = 0
     
@@ -57,11 +61,18 @@ class GameScreenViewController: UIViewController {
         sameButton.layer.cornerRadius = 15
         differentButton.layer.cornerRadius = 15
         
-        timer = Timer.scheduledTimer(timeInterval: 3,
+        timer = Timer.scheduledTimer(timeInterval: 1,
                 target: self,
                 selector: #selector(GameScreenViewController.startGame),
                 userInfo: nil,
                 repeats: true)
+        
+        let defaults = UserDefaults.standard
+        
+        // check if there's a highscore
+        if defaults.object(forKey: "highscore") != nil {
+            highScore = defaults.integer(forKey: "highscore")
+        }
     }
     
     
@@ -126,6 +137,14 @@ class GameScreenViewController: UIViewController {
         let randomElem = alphabet.randomElement()
         containerHuruf.append(randomElem!)
         
+        if containerHuruf.count == 1{
+            self.inisialisasiLabel.isHidden = false
+            inisialisasiLabel.text = "this is the first letter"
+        }else if containerHuruf.count == 2{
+            self.inisialisasiLabel.isHidden = false
+            inisialisasiLabel.text = "this is the second letter"
+        }
+        
         if containerHuruf.count > 2 {
             timer.invalidate()
             self.currentHuruf = randomElem!
@@ -141,8 +160,9 @@ class GameScreenViewController: UIViewController {
 
     
     @objc func runTimer() {
+        counter -=  0.1
         
-        counter -=  1
+        inisialisasiLabel.isHidden = true
         
         let flooredCounter = Int(floor(counter))
         let minute = flooredCounter / 60
@@ -163,8 +183,7 @@ class GameScreenViewController: UIViewController {
         }
  
     let animation:CATransition = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name:
-            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.type = CATransitionType.fade
         animation.subtype = CATransitionSubtype.fromTop
         self.timerLabel.text = "\(minuteString):\(secondString)"
@@ -173,7 +192,14 @@ class GameScreenViewController: UIViewController {
         
         if minute == 0 && second == 0 {
             timer.invalidate()
-            counter = 60.0
+            bgAudioPlayer.stop()
+            
+            let defaults = UserDefaults.standard
+            
+            // cek ketika score sekarang lebih tinggi dari high score
+            if point > highScore || defaults.object(forKey: "highscore") == nil {
+                defaults.set(point, forKey: "highscore")
+            }
             
             _ = pointView.text
             _ = pointCorrect
@@ -191,7 +217,6 @@ class GameScreenViewController: UIViewController {
     
     
     @IBAction func sameButton(_ sender: Any) {
-        
         let n = containerHuruf.count - 3
         let lastValue = containerHuruf.last
         let randomElem = alphabet.randomElement()
@@ -200,12 +225,15 @@ class GameScreenViewController: UIViewController {
             point += 10
             pointCorrect += 1
             pointView.text = "\(point)"
-            print("Benar")
             self.pointView.text = "\(point)"
+            generator.notificationOccurred(.success)
+            whiteRectangle.image = UIImage(named: "RectangleHijau")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
         } else {
             pointIncorrect += 1
-            print("Salah")
-            pointIncorrect += 1
+            generator.notificationOccurred(.error)
+            whiteRectangle.image = UIImage(named: "RectangleMerah")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
         }
         containerHuruf.append(randomElem!)
         
@@ -218,6 +246,9 @@ class GameScreenViewController: UIViewController {
         self.hurufLabel.layer.add(animation, forKey: CATransitionType.push.rawValue)
     }
     
+    @objc func changeBackgroundDefault() {
+        whiteRectangle.image = UIImage(named: "WhiteRectangle-1")
+    }
     
     @IBAction func differentButton(_ sender: Any) {
         let n = containerHuruf.count - 3
@@ -229,10 +260,15 @@ class GameScreenViewController: UIViewController {
             pointCorrect += 1
             pointView.text = "\(point)"
             pointCorrect += 1
-            print("Benar")
+            generator.notificationOccurred(.success)
+            whiteRectangle.image = UIImage(named: "RectangleHijau")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
         } else {
             pointIncorrect += 1
-            print("Salah")
+            generator.notificationOccurred(.error)
+            whiteRectangle.image = UIImage(named: "RectangleMerah")
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(changeBackgroundDefault), userInfo: nil, repeats: false)
+            
         }
         containerHuruf.append(randomElem!)
 
@@ -243,6 +279,7 @@ class GameScreenViewController: UIViewController {
         self.hurufLabel.text = randomElem
         animation.duration = 0.25
         self.hurufLabel.layer.add(animation, forKey: CATransitionType.push.rawValue)
+        
     }
     
     @IBAction func pauseGame(_ sender: Any) {
@@ -253,6 +290,7 @@ class GameScreenViewController: UIViewController {
             let vc = self.storyboard?.instantiateViewController(identifier: "main") as! MainScreen
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
+            self.bgAudioPlayer.stop()
         }))
         
         alert.addAction(UIAlertAction(title: "Continue Game", style: UIAlertAction.Style.cancel, handler: {_ in
@@ -283,9 +321,9 @@ class GameScreenViewController: UIViewController {
        }
    }
     func transferScore(){
-        let dataScore = pointView.text
-        let dataCorecct = pointCorrect
-        let dataIncorecct = pointIncorrect
+        _ = pointView.text
+        _ = pointCorrect
+        _ = pointIncorrect
         let vct = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
         vct.takeScore = point
         vct.takeInccorect = pointIncorrect
