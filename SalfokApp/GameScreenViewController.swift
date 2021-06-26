@@ -9,9 +9,11 @@ import UIKit
 import AVFoundation
 
 class GameScreenViewController: UIViewController {
-
+    
+    @IBOutlet var notif: UIImageView!
+    @IBOutlet var btnInfo: UIButton!
+    @IBOutlet var vwContainer: UIView!
     @IBOutlet weak var pointView: UILabel!
-    @IBOutlet weak var fakeButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var sameButton: UIButton!
     @IBOutlet weak var differentButton: UIButton!
@@ -27,16 +29,33 @@ class GameScreenViewController: UIViewController {
     var currentHuruf: String = ""
     
     var bgSoundURI: URL?
+    var audioNotification: URL?
     var bgAudioPlayer = AVAudioPlayer()
+    var bgAudioNotif = AVAudioPlayer()
     let generator = UINotificationFeedbackGenerator()
     var point :Int = 0
     var highScore: Int = 0
     var pointCorrect :Int = 0
     var pointIncorrect :Int = 0
     
+
+    var image =
+        ["notifA.png","notifB.png","notifC.png","notifD.png","notifE.png","notifF.png"]
+    var backSound =
+        ["time2","bgsound1","bgsound2","bgsound3","bgsound4"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-          
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapView(tapGestureRecognizer:)))
+            notif.isUserInteractionEnabled = true
+            notif.addGestureRecognizer(tapGestureRecognizer)
+        
+        self.vwContainer.alpha = 0.0
+        self.vwContainer.layer.cornerRadius = 5.0
+
         self.sameButton.isHidden = true
         self.differentButton.isHidden = true
         sameButton.layer.cornerRadius = 15
@@ -56,9 +75,61 @@ class GameScreenViewController: UIViewController {
         }
     }
     
+    
+    
+    @objc func tapView(tapGestureRecognizer: UITapGestureRecognizer) {
+               
+        let alert = UIAlertController(title: "Oh, No!!", message: "You just got distracted 😱", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default) {
+                (action) in
+                print(action)
+            }
+        alert.addAction(okayAction)
+        present(alert, animated: true, completion: nil)
+        print("tap is success!!")
+    }
+    
+    
     @IBAction func startToPlay() {
+        
         bgSound()
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+       
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+    }
+    
+    
+    @objc func notification() {
+        
+        let number = Int.random(in: 0..<6)
+        notif.image = UIImage(named: image[number])
+        
+        
+        audioNotification = URL(fileURLWithPath: Bundle.main.path(forResource: "audioNotif1", ofType: "mp3")!)
+           do {
+               guard let uri = audioNotification else {return}
+               bgAudioNotif = try AVAudioPlayer(contentsOf: uri)
+               bgAudioNotif.play()
+
+           } catch {
+               print("something went wrong")
+           }
+        
+        //heptic function
+        let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.warning)
+        
+            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
+                self.vwContainer.alpha = 1.0
+            })
+        
+            DispatchQueue.main.asyncAfter(deadline: .now() + 04.0) { // Change `2.0` to the desired number of seconds.
+               // Code you want to be delayed
+                UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut , animations: {
+                    self.vwContainer.alpha = 0.0
+            })
+
+        }
+        
     }
     
     @objc func startGame() {
@@ -80,10 +151,13 @@ class GameScreenViewController: UIViewController {
             self.sameButton.isHidden = false
             self.differentButton.isHidden = false
             startToPlay()
+            
         } else {
             hurufLabel.text = randomElem
+           
         }
     }
+
     
     @objc func runTimer() {
         counter -=  0.1
@@ -96,11 +170,19 @@ class GameScreenViewController: UIViewController {
         
         let second = flooredCounter % 60
         var secondString = "\(second)"
+        
         if second < 10 {
             secondString = "0\(second)"
         }
         
-        let animation:CATransition = CATransition()
+        if second % 12 == 0 && second != 60  {
+            notification()
+            bgAudioPlayer.pause()
+        }else{
+            bgAudioPlayer.play()
+        }
+ 
+    let animation:CATransition = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.type = CATransitionType.fade
         animation.subtype = CATransitionSubtype.fromTop
@@ -218,7 +300,16 @@ class GameScreenViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func bgSound(){
-        bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: "time2", ofType: "m4a")!)
+        
+        let number = Int.random(in: 0..<5)
+        var type = ""
+        if number == 0 {
+            type = "m4a"
+        }else{
+            type = "mp3"
+        }
+        
+        bgSoundURI = URL(fileURLWithPath: Bundle.main.path(forResource: backSound[number], ofType: type)!)
        do {
            guard let uri = bgSoundURI else {return}
            bgAudioPlayer = try AVAudioPlayer(contentsOf: uri)

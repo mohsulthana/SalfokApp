@@ -310,6 +310,9 @@
                                 <state key="normal" image="info.circle" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="showInfoGame:" destination="yZM-xd-kIv" eventType="touchUpInside" id="5eO-3c-xbR"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-lO-pJ6">
                                 <rect key="frame" x="169.66666666666666" y="88" width="50.666666666666657" height="20"/>
@@ -336,10 +339,25 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DX4-Lb-ije">
+                                <rect key="frame" x="3" y="44" width="387" height="103"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OnA-0g-ieg">
+                                        <rect key="frame" x="-12" y="-11" width="399" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="HVK-BN-HJs"/>
+                                    <constraint firstAttribute="width" constant="376" id="bZN-wH-dVC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bVa-NV-vQg"/>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="DX4-Lb-ije" firstAttribute="centerX" secondItem="Wvq-dj-bTE" secondAttribute="centerX" id="Hub-hl-QJ3"/>
+                            <constraint firstItem="DX4-Lb-ije" firstAttribute="top" secondItem="bVa-NV-vQg" secondAttribute="top" constant="15" id="RWD-36-hPh"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="trailing" secondItem="XhP-q4-cpb" secondAttribute="trailing" constant="46" id="0XQ-PR-HSI"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="trailing" secondItem="FCo-Yz-oyK" secondAttribute="trailing" constant="35" id="3M1-GB-SuT"/>
                             <constraint firstItem="bVa-NV-vQg" firstAttribute="bottom" secondItem="8jb-Md-EWR" secondAttribute="bottom" constant="121" id="5TN-Sf-z7V"/>
@@ -362,7 +380,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnInfo" destination="KMd-4P-M2w" id="QJj-pX-dDR"/>
                         <outlet property="differentButton" destination="FCo-Yz-oyK" id="lcY-7F-Ztk"/>
+                        <outlet property="notif" destination="OnA-0g-ieg" id="QK8-U4-Kot"/>
+                        <outlet property="vwContainer" destination="DX4-Lb-ije" id="Tyk-PW-8XX"/>
                         <outlet property="hurufLabel" destination="AAh-4f-MjX" id="VUb-Z5-HXj"/>
                         <outlet property="inisialisasiLabel" destination="Gdf-7X-CnM" id="yBi-d7-PkF"/>
                         <outlet property="pointView" destination="GFb-LC-yaD" id="msz-QQ-bUR"/>
