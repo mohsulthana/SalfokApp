@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZM-xd-kIv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -311,7 +311,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="showInfoGame:" destination="yZM-xd-kIv" eventType="touchUpInside" id="5eO-3c-xbR"/>
+                                    <action selector="showInfo:" destination="yZM-xd-kIv" eventType="touchUpInside" id="Zcn-xI-WGs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-lO-pJ6">
@@ -352,6 +352,16 @@
                                     <constraint firstAttribute="width" constant="376" id="bZN-wH-dVC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-Kl-DOb">
+                                <rect key="frame" x="3" y="155" width="398" height="574"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-ak-FLB">
+                                        <rect key="frame" x="-134" y="-21" width="653" height="586"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bVa-NV-vQg"/>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -380,14 +390,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnClose" destination="XhP-q4-cpb" id="UaH-wI-apF"/>
                         <outlet property="btnInfo" destination="KMd-4P-M2w" id="QJj-pX-dDR"/>
                         <outlet property="differentButton" destination="FCo-Yz-oyK" id="lcY-7F-Ztk"/>
                         <outlet property="hurufLabel" destination="AAh-4f-MjX" id="VUb-Z5-HXj"/>
+                        <outlet property="imageInfo" destination="HmC-ak-FLB" id="1J0-NH-EYe"/>
                         <outlet property="inisialisasiLabel" destination="Gdf-7X-CnM" id="yBi-d7-PkF"/>
                         <outlet property="notif" destination="OnA-0g-ieg" id="QK8-U4-Kot"/>
                         <outlet property="pointView" destination="GFb-LC-yaD" id="msz-QQ-bUR"/>
                         <outlet property="sameButton" destination="8jb-Md-EWR" id="iF8-3I-iti"/>
+                        <outlet property="scoreLabel" destination="ugD-lO-pJ6" id="RsE-yg-9bh"/>
                         <outlet property="timerLabel" destination="rl3-gq-9r3" id="ADo-2f-FRn"/>
+                        <outlet property="viewInfo" destination="hu2-Kl-DOb" id="PsH-1C-9VD"/>
                         <outlet property="vwContainer" destination="DX4-Lb-ije" id="Tyk-PW-8XX"/>
                         <outlet property="whiteRectangle" destination="GBN-dQ-nrw" id="My7-Ph-1fi"/>
                     </connections>
@@ -404,21 +418,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNR-1P-DXc">
-                                <rect key="frame" x="41" y="53" width="31" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="cIi-Ft-YLd"/>
-                                    <constraint firstAttribute="width" constant="31" id="hC4-KM-fEm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="info.circle" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="goToInfo:" destination="pwN-44-TdR" eventType="touchUpInside" id="B4a-z8-dLf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5um-Rb-Igm">
                                 <rect key="frame" x="318" y="53" width="31" height="31"/>
                                 <constraints>
@@ -434,8 +433,8 @@
                                     <action selector="backToMainScreen:" destination="pwN-44-TdR" eventType="touchUpInside" id="ZwR-Uv-N9k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Performance Insight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b45-op-Ve7">
-                                <rect key="frame" x="30" y="125.00000000000001" width="316" height="28.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Performance Insight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b45-op-Ve7">
+                                <rect key="frame" x="30" y="115" width="316" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -497,6 +496,9 @@
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="playGameAgain:" destination="pwN-44-TdR" eventType="touchUpInside" id="bf5-uL-oDJ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wrong        :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cW-mZ-xez">
                                 <rect key="frame" x="30" y="268" width="117" height="38"/>
@@ -531,7 +533,6 @@
                             <constraint firstItem="MBw-Kn-VFf" firstAttribute="trailing" secondItem="b45-op-Ve7" secondAttribute="trailing" constant="44" id="ISQ-sc-KWp"/>
                             <constraint firstItem="hv6-HK-BZ9" firstAttribute="top" secondItem="b45-op-Ve7" secondAttribute="bottom" constant="32" id="P90-GE-wcu"/>
                             <constraint firstItem="Ppq-nA-oyB" firstAttribute="top" secondItem="G3x-nA-KXv" secondAttribute="bottom" constant="-3" id="RXF-Gg-fEu"/>
-                            <constraint firstItem="sNR-1P-DXc" firstAttribute="top" secondItem="MBw-Kn-VFf" secondAttribute="top" constant="9" id="STy-mT-xyA"/>
                             <constraint firstItem="MBw-Kn-VFf" firstAttribute="trailing" secondItem="5um-Rb-Igm" secondAttribute="trailing" constant="41" id="SWa-gX-9a7"/>
                             <constraint firstItem="3YU-8n-b9H" firstAttribute="top" secondItem="b45-op-Ve7" secondAttribute="bottom" constant="35" id="SXB-wP-8t5"/>
                             <constraint firstItem="G3x-nA-KXv" firstAttribute="leading" secondItem="Ppq-nA-oyB" secondAttribute="leading" id="U2e-do-c9p"/>
@@ -543,25 +544,23 @@
                             <constraint firstItem="G3x-nA-KXv" firstAttribute="top" secondItem="3YU-8n-b9H" secondAttribute="bottom" constant="-3" id="iQ8-jk-xw6"/>
                             <constraint firstItem="G3x-nA-KXv" firstAttribute="baseline" secondItem="kZU-AM-c2G" secondAttribute="baseline" id="ld4-rS-jn5"/>
                             <constraint firstItem="hv6-HK-BZ9" firstAttribute="leading" secondItem="MBw-Kn-VFf" secondAttribute="leading" constant="30" id="nBh-bn-Qq2"/>
-                            <constraint firstItem="sNR-1P-DXc" firstAttribute="leading" secondItem="MBw-Kn-VFf" secondAttribute="leading" constant="41" id="pul-Mj-1pH"/>
                             <constraint firstItem="5um-Rb-Igm" firstAttribute="top" secondItem="MBw-Kn-VFf" secondAttribute="top" constant="9" id="qkQ-wV-7bQ"/>
                             <constraint firstItem="6cW-mZ-xez" firstAttribute="leading" secondItem="MBw-Kn-VFf" secondAttribute="leading" constant="30" id="rYW-CA-0oU"/>
-                            <constraint firstItem="b45-op-Ve7" firstAttribute="top" secondItem="sNR-1P-DXc" secondAttribute="bottom" constant="41" id="wOG-gh-S1d"/>
                             <constraint firstItem="kZU-AM-c2G" firstAttribute="top" secondItem="hv6-HK-BZ9" secondAttribute="bottom" id="xXg-gF-feH"/>
                             <constraint firstItem="Dwa-42-8ew" firstAttribute="top" secondItem="6cW-mZ-xez" secondAttribute="bottom" constant="30" id="zae-Lg-XZp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnPlayAgain" destination="pt5-aS-d4c" id="10y-4W-GbR"/>
                         <outlet property="correctView" destination="G3x-nA-KXv" id="fK4-AI-qKR"/>
                         <outlet property="incorrectView" destination="Ppq-nA-oyB" id="t5m-x7-vd4"/>
-                        <outlet property="infoButton" destination="sNR-1P-DXc" id="lMc-Is-abc"/>
                         <outlet property="playAgainButton" destination="pt5-aS-d4c" id="ADE-aI-Fqz"/>
                         <outlet property="scoreView" destination="3YU-8n-b9H" id="egg-dn-07H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hce-XP-oIv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4829" y="126"/>
+            <point key="canvasLocation" x="4827.6923076923076" y="125.82938388625591"/>
         </scene>
     </scenes>
     <resources>

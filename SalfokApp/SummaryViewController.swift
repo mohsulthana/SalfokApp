@@ -10,13 +10,13 @@ import UIKit
 class SummaryViewController: UIViewController {
 
     
-    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var scoreView: UILabel!
     @IBOutlet weak var correctView: UILabel!
     @IBOutlet weak var incorrectView: UILabel!
     var takeScore = Int()
     var takeCorrect = Int()
+    @IBOutlet var btnPlayAgain: UIButton!
     var takeInccorect = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +44,19 @@ class SummaryViewController: UIViewController {
     }
     
     
-    @IBAction func goToInfo(_ sender: Any) {
+    
+    @IBAction func playGameAgain(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "readyGo") as! ReadyGo
+                vc.modalPresentationStyle = .fullScreen
+        //            present(vc,animated: true)
+                
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.type = CATransitionType.push
+                transition.subtype = CATransitionSubtype.fromRight
+                transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+                view.window!.layer.add(transition, forKey: kCATransition)
+                present(vc, animated: false, completion: nil)
     }
     
-
 }

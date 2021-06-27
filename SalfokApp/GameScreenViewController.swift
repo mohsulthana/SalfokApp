@@ -10,6 +10,8 @@ import AVFoundation
 
 class GameScreenViewController: UIViewController {
     
+    @IBOutlet var btnClose: UIButton!
+    @IBOutlet var viewInfo: UIView!
     @IBOutlet var notif: UIImageView!
     @IBOutlet var btnInfo: UIButton!
     @IBOutlet var vwContainer: UIView!
@@ -21,9 +23,12 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var inisialisasiLabel: UILabel!
     @IBOutlet weak var whiteRectangle: UIImageView!
     
+    @IBOutlet var scoreLabel: UILabel!
     var containerHuruf = [String]()
     var alphabet = ["a","c","e","o"]
 
+    @IBOutlet var imageInfo: UIImageView!
+    var infoStatus = false
     var counter = 60.0
     var timer = Timer()
     var currentHuruf: String = ""
@@ -43,10 +48,25 @@ class GameScreenViewController: UIViewController {
         ["notifA.png","notifB.png","notifC.png","notifD.png","notifE.png","notifF.png"]
     var backSound =
         ["time2","bgsound1","bgsound2","bgsound3","bgsound4"]
+    var imgInfo = "tapInfo.jpg"
+    
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//
+//        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+//                viewInfo.addGestureRecognizer(tapGesture)
+        
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(handleTap(tapGestureRecognizer:)))
+            viewInfo.isUserInteractionEnabled = true
+            viewInfo.addGestureRecognizer(tapGestureRecognizer2)
+        
+        
+        self.viewInfo.alpha = 0.0
+        self.viewInfo.layer.cornerRadius = 5.0
         
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapView(tapGestureRecognizer:)))
@@ -73,6 +93,39 @@ class GameScreenViewController: UIViewController {
         if defaults.object(forKey: "highscore") != nil {
             highScore = defaults.integer(forKey: "highscore")
         }
+    }
+    
+    
+    @IBAction func showInfo(_ sender: Any) {
+        
+        infoStatus = true
+        self.btnClose.isHidden = true
+        self.scoreLabel.isHidden = true
+        self.btnInfo.isHidden = true
+        self.pointView.isHidden = true
+        
+        UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseOut, animations: {
+            self.viewInfo.alpha = 1.0
+            self.imageInfo.image = UIImage(named: self.imgInfo)
+            
+            self.bgAudioPlayer.pause()
+            
+        })
+
+    }
+    
+    @objc func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        infoStatus = false
+        self.btnClose.isHidden = false
+        self.scoreLabel.isHidden = false
+        self.btnInfo.isHidden = false
+        self.pointView.isHidden = false
+        
+        UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut, animations: {
+            self.viewInfo.alpha = 0.0
+        })
+        bgAudioPlayer.play()
     }
     
     
@@ -160,59 +213,65 @@ class GameScreenViewController: UIViewController {
 
     
     @objc func runTimer() {
-        counter -=  1
         
-        inisialisasiLabel.isHidden = true
-        
-        let flooredCounter = Int(floor(counter))
-        let minute = flooredCounter / 60
-        let minuteString = "0\(minute)"
-        
-        let second = flooredCounter % 60
-        var secondString = "\(second)"
-        
-        if second < 10 {
-            secondString = "0\(second)"
-        }
-        
-        if second % 12 == 0 && second != 60  {
-            notification()
-            bgAudioPlayer.pause()
-        }else{
-            bgAudioPlayer.play()
-        }
- 
-    let animation:CATransition = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        animation.type = CATransitionType.fade
-        animation.subtype = CATransitionSubtype.fromTop
-        self.timerLabel.text = "\(minuteString):\(secondString)"
-        animation.duration = 0.1
-        self.timerLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
-        
-        if minute == 0 && second == 0 {
-            timer.invalidate()
-            bgAudioPlayer.stop()
+        if infoStatus == false{
+            counter -=  1
             
-            let defaults = UserDefaults.standard
+            inisialisasiLabel.isHidden = true
             
-            // cek ketika score sekarang lebih tinggi dari high score
-            if point > highScore || defaults.object(forKey: "highscore") == nil {
-                defaults.set(point, forKey: "highscore")
+            let flooredCounter = Int(floor(counter))
+            let minute = flooredCounter / 60
+            let minuteString = "0\(minute)"
+            
+            let second = flooredCounter % 60
+            var secondString = "\(second)"
+            
+            if second < 10 {
+                secondString = "0\(second)"
             }
             
-            _ = pointView.text
-            _ = pointCorrect
-            _ = pointIncorrect
-            let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
+            if second % 12 == 0 && second != 60  {
+                notification()
+                bgAudioPlayer.pause()
+            }else{
+                bgAudioPlayer.play()
+            }
+     
+        let animation:CATransition = CATransition()
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            animation.type = CATransitionType.fade
+            animation.subtype = CATransitionSubtype.fromTop
+            self.timerLabel.text = "\(minuteString):\(secondString)"
+            animation.duration = 0.1
+            self.timerLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
             
-            vc.takeScore = point
-            vc.takeInccorect = pointIncorrect
-            vc.takeCorrect = pointCorrect
+            if minute == 0 && second == 0 {
+                timer.invalidate()
+                bgAudioPlayer.stop()
+                
+                let defaults = UserDefaults.standard
+                
+                // cek ketika score sekarang lebih tinggi dari high score
+                if point > highScore || defaults.object(forKey: "highscore") == nil {
+                    defaults.set(point, forKey: "highscore")
+                }
+                
+                _ = pointView.text
+                _ = pointCorrect
+                _ = pointIncorrect
+                let vc = storyboard?.instantiateViewController(identifier: "summary") as! SummaryViewController
+                
+                vc.takeScore = point
+                vc.takeInccorect = pointIncorrect
+                vc.takeCorrect = pointCorrect
+                
+                vc.modalPresentationStyle = .fullScreen
+                present(vc,animated: true)
+            }
             
-            vc.modalPresentationStyle = .fullScreen
-            present(vc,animated: true)
         }
+        
+  
     }
     
     
