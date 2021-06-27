@@ -9,17 +9,17 @@
 /* Begin PBXBuildFile section */
 		1740B3632684359D003AD8F0 /* time2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1740B3612684359D003AD8F0 /* time2.m4a */; };
 		1740B3642684359D003AD8F0 /* time1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1740B3622684359D003AD8F0 /* time1.m4a */; };
+		17BA530F26887A6E00B0EDFC /* audioNotif1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17BA530E26887A6E00B0EDFC /* audioNotif1.mp3 */; };
+		17BA531126887AA800B0EDFC /* bgsound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17BA531026887AA800B0EDFC /* bgsound2.mp3 */; };
+		17BA531326887AB200B0EDFC /* bgsound4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17BA531226887AB200B0EDFC /* bgsound4.mp3 */; };
+		17BA531526887ABC00B0EDFC /* bgsound3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17BA531426887ABC00B0EDFC /* bgsound3.mp3 */; };
+		17BA531726887AC500B0EDFC /* bgsound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17BA531626887AC500B0EDFC /* bgsound1.mp3 */; };
 		17DD25B5267AE6590041A354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25B4267AE6590041A354 /* AppDelegate.swift */; };
 		17DD25B7267AE6590041A354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25B6267AE6590041A354 /* SceneDelegate.swift */; };
 		17DD25BC267AE6590041A354 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25BA267AE6590041A354 /* Main.storyboard */; };
 		17DD25BF267AE6590041A354 /* SalfokApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17DD25BD267AE6590041A354 /* SalfokApp.xcdatamodeld */; };
 		17DD25C1267AE65A0041A354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25C0267AE65A0041A354 /* Assets.xcassets */; };
 		17DD25C4267AE65A0041A354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DD25C2267AE65A0041A354 /* LaunchScreen.storyboard */; };
-		421C47DB26860F6F00C81EFF /* audioNotif1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 421C47DA26860F6F00C81EFF /* audioNotif1.mp3 */; };
-		42EBE27726863BB600ACEFD3 /* bgsound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42EBE27626863BB600ACEFD3 /* bgsound1.mp3 */; };
-		42EBE27A26863BBC00ACEFD3 /* bgsound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42EBE27926863BBC00ACEFD3 /* bgsound2.mp3 */; };
-		42EBE27E26863BD500ACEFD3 /* bgsound3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42EBE27D26863BD400ACEFD3 /* bgsound3.mp3 */; };
-		42EBE28126863BE100ACEFD3 /* bgsound4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42EBE28026863BE100ACEFD3 /* bgsound4.mp3 */; };
 		6D29BFE92681125B007411EA /* Salfok Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D29BFE82681125B007411EA /* Salfok Icon.png */; };
 		6D5E1CAA2681F63400D8140B /* FirstInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E1CA92681F63400D8140B /* FirstInstructions.swift */; };
 		6D5E1CB226820CCE00D8140B /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E1CB126820CCE00D8140B /* MainScreen.swift */; };
@@ -31,6 +31,12 @@
 /* Begin PBXFileReference section */
 		1740B3612684359D003AD8F0 /* time2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = time2.m4a; sourceTree = "<group>"; };
 		1740B3622684359D003AD8F0 /* time1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = time1.m4a; sourceTree = "<group>"; };
+		17BA530E26887A6E00B0EDFC /* audioNotif1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audioNotif1.mp3; sourceTree = "<group>"; };
+		17BA531026887AA800B0EDFC /* bgsound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgsound2.mp3; sourceTree = "<group>"; };
+		17BA531226887AB200B0EDFC /* bgsound4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgsound4.mp3; sourceTree = "<group>"; };
+		17BA531426887ABC00B0EDFC /* bgsound3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgsound3.mp3; sourceTree = "<group>"; };
+		17BA531626887AC500B0EDFC /* bgsound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgsound1.mp3; sourceTree = "<group>"; };
+		17BA531826887ACE00B0EDFC /* time2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = time2.m4a; sourceTree = "<group>"; };
 		17DD25B1267AE6590041A354 /* SalfokApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalfokApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DD25B4267AE6590041A354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17DD25B6267AE6590041A354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,12 +45,6 @@
 		17DD25C0267AE65A0041A354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17DD25C3267AE65A0041A354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17DD25C5267AE65A0041A354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		421C47DA26860F6F00C81EFF /* audioNotif1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = audioNotif1.mp3; path = ../../../../Musik/audioNotif1.mp3; sourceTree = "<group>"; };
-		42EBE27626863BB600ACEFD3 /* bgsound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgsound1.mp3; path = ../../../../../Musik/bgsound1.mp3; sourceTree = "<group>"; };
-		42EBE27926863BBC00ACEFD3 /* bgsound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgsound2.mp3; path = ../../../../../Musik/bgsound2.mp3; sourceTree = "<group>"; };
-		42EBE27D26863BD400ACEFD3 /* bgsound3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgsound3.mp3; path = ../../../../../Musik/bgsound3.mp3; sourceTree = "<group>"; };
-		42EBE28026863BE100ACEFD3 /* bgsound4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgsound4.mp3; path = ../../../../../Musik/bgsound4.mp3; sourceTree = "<group>"; };
-		42ECB9DC2686427100868356 /* time2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = time2.m4a; path = ../../../../../Musik/time2.m4a; sourceTree = "<group>"; };
 		6D29BFE82681125B007411EA /* Salfok Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Salfok Icon.png"; path = "Assets.xcassets/Salfok Icon.imageset/Salfok Icon.png"; sourceTree = "<group>"; };
 		6D5E1CA92681F63400D8140B /* FirstInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInstructions.swift; sourceTree = "<group>"; };
 		6D5E1CB126820CCE00D8140B /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				42EBE27226863B7E00ACEFD3 /* sound */,
-				421C47DA26860F6F00C81EFF /* audioNotif1.mp3 */,
 				1740B3622684359D003AD8F0 /* time1.m4a */,
 				1740B3612684359D003AD8F0 /* time2.m4a */,
 				17DD25B4267AE6590041A354 /* AppDelegate.swift */,
@@ -107,11 +106,12 @@
 		42EBE27226863B7E00ACEFD3 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				42ECB9DC2686427100868356 /* time2.m4a */,
-				42EBE28026863BE100ACEFD3 /* bgsound4.mp3 */,
-				42EBE27D26863BD400ACEFD3 /* bgsound3.mp3 */,
-				42EBE27926863BBC00ACEFD3 /* bgsound2.mp3 */,
-				42EBE27626863BB600ACEFD3 /* bgsound1.mp3 */,
+				17BA531826887ACE00B0EDFC /* time2.m4a */,
+				17BA531626887AC500B0EDFC /* bgsound1.mp3 */,
+				17BA531426887ABC00B0EDFC /* bgsound3.mp3 */,
+				17BA530E26887A6E00B0EDFC /* audioNotif1.mp3 */,
+				17BA531026887AA800B0EDFC /* bgsound2.mp3 */,
+				17BA531226887AB200B0EDFC /* bgsound4.mp3 */,
 			);
 			path = sound;
 			sourceTree = "<group>";
@@ -176,14 +176,14 @@
 				17DD25C4267AE65A0041A354 /* LaunchScreen.storyboard in Resources */,
 				17DD25C1267AE65A0041A354 /* Assets.xcassets in Resources */,
 				17DD25BC267AE6590041A354 /* Main.storyboard in Resources */,
-				42EBE27E26863BD500ACEFD3 /* bgsound3.mp3 in Resources */,
-				42EBE27A26863BBC00ACEFD3 /* bgsound2.mp3 in Resources */,
+				17BA531126887AA800B0EDFC /* bgsound2.mp3 in Resources */,
 				6D29BFE92681125B007411EA /* Salfok Icon.png in Resources */,
-				42EBE27726863BB600ACEFD3 /* bgsound1.mp3 in Resources */,
 				1740B3632684359D003AD8F0 /* time2.m4a in Resources */,
-				42EBE28126863BE100ACEFD3 /* bgsound4.mp3 in Resources */,
-				421C47DB26860F6F00C81EFF /* audioNotif1.mp3 in Resources */,
+				17BA530F26887A6E00B0EDFC /* audioNotif1.mp3 in Resources */,
+				17BA531326887AB200B0EDFC /* bgsound4.mp3 in Resources */,
+				17BA531726887AC500B0EDFC /* bgsound1.mp3 in Resources */,
 				1740B3642684359D003AD8F0 /* time1.m4a in Resources */,
+				17BA531526887ABC00B0EDFC /* bgsound3.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

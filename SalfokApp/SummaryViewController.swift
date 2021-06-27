@@ -9,7 +9,6 @@ import UIKit
 
 class SummaryViewController: UIViewController {
 
-    
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var scoreView: UILabel!
     @IBOutlet weak var correctView: UILabel!
@@ -31,13 +30,13 @@ class SummaryViewController: UIViewController {
         
         let alert = UIAlertController(title: "Are you sure want to quit?", message: "you will be back to mainscreen", preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: "Quit", style: UIAlertAction.Style.default, handler: {item in
+        alert.addAction(UIAlertAction(title: "Yes, quit to mainscreen", style: UIAlertAction.Style.default, handler: {item in
             let vc = self.storyboard?.instantiateViewController(identifier: "main") as! MainScreen
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Back to Summary", style: UIAlertAction.Style.cancel, handler:nil))
+        alert.addAction(UIAlertAction(title: "No, stay here", style: UIAlertAction.Style.cancel, handler:nil))
         
         self.present(alert, animated: true, completion: nil)
         
@@ -48,8 +47,7 @@ class SummaryViewController: UIViewController {
     @IBAction func playGameAgain(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "readyGo") as! ReadyGo
                 vc.modalPresentationStyle = .fullScreen
-        //            present(vc,animated: true)
-                
+        
                 let transition = CATransition()
                 transition.duration = 0.5
                 transition.type = CATransitionType.push
@@ -58,5 +56,4 @@ class SummaryViewController: UIViewController {
                 view.window!.layer.add(transition, forKey: kCATransition)
                 present(vc, animated: false, completion: nil)
     }
-    
 }
